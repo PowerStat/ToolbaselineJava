@@ -22,9 +22,7 @@
 
     <license.inceptionYear>2023</license.inceptionYear>
     <license.licenseName>Apache License, Version 2.0</license.licenseName>
-    
-    <sonar.host.url>http://192.168.1.155:9000</sonar.host.url>
-    
+        
     <javaRelease>11</javaRelease>
     
     <javadocPluginVersion>3.6.0</javadocPluginVersion>
@@ -88,10 +86,6 @@
       <name>Kai Hofmann</name>
       <email>powerstat@web.de</email>
       <url>http://www.powerstat.de/</url>
-      <!--
-      <organization>Dipl.-Inform. Kai Hofmann</organization>
-      <organizationUrl>https://www.powerstat.de/</organizationUrl>
-      -->
       <roles>
         <role>manager</role>
         <role>architect</role>
@@ -180,11 +174,6 @@
         <configuration>
           <show>protected</show>
           <failOnError>false</failOnError>
-          <!-- Not working!
-          <sourceFileExcludes>
-            <sourceFileExclude>**/module-info.java</sourceFileExclude>
-          </sourceFileExcludes>
-          -->
         </configuration>
       </plugin>
 
@@ -202,14 +191,6 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junitVersion}</version>
           </dependency>
-          
-          <!--
-          <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>9.5</version>
-          </dependency> 
-          -->
 
         </dependencies>
       </plugin>
@@ -252,38 +233,15 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <!-- <Build-Number>${buildNumber}</Build-Number> -->
               <Version>${project.version}</Version>
-              <GIT>https://github.com/PowerStat/Project.git</GIT>
-              <SCM-Revision>${buildNumber}</SCM-Revision>
+              <GIT>https://github.com/PowerStat/ToolbaselineJava.git</GIT>
             </manifestEntries>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
           <finalName>${project.artifactId}</finalName>
         </configuration>
       </plugin>
-<!--
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <version>3.2.0</version>
-        <executions>
-          <execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>create</goal>
-            </goals>
-            <configuration>
-              <useLastComittedrevision>true</useLastComittedrevision>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <doCheck>false</doCheck>
-          <doUpdate>false</doUpdate>
-        </configuration>
-      </plugin>
--->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -706,9 +664,6 @@
         </executions>
       </plugin>
 
-
-      <!-- TODO pandoc -> epub, markdown, odt, ... -->
-
     </plugins>
   </build>
 
@@ -738,7 +693,6 @@
         <reportSets>
           <reportSet>
             <reports>
-              <!-- select non-aggregate reports -->
               <report>report</report>
             </reports>
           </reportSet>

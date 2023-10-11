@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>11.0.0-SNAPSHOT</version>
+  <version>11.0.0</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -352,7 +352,7 @@
                   <banSnapshots>true</banSnapshots>
                   <phases>clean,deploy,site</phases>
                 </requirePluginVersions>
-                <requireReleaseDeps/>
+                <requireReleaseDeps />
                 <requireUpperBoundDeps />
                 <!--
                 <reactorModuleConvergence>

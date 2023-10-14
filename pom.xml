@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>11.0.1-SNAPSHOT</version>
+  <version>11.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -23,6 +23,10 @@
     <license.inceptionYear>2023</license.inceptionYear>
     <license.licenseName>Apache License, Version 2.0</license.licenseName>
         
+    <sonarTypeHost>s01.oss.sonatype.org</sonarTypeHost>
+    
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    
     <javaRelease>11</javaRelease>
     
     <javadocPluginVersion>3.6.0</javadocPluginVersion>
@@ -105,11 +109,11 @@
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://${sonarTypeHost}/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
       <id>ossrh</id>
-      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <url>https://${sonarTypeHost}/service/local/staging/deploy/maven2/</url>
     </repository>
     <site>
       <id>powerstat</id>
@@ -292,7 +296,7 @@
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
-          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <nexusUrl>https://${sonarTypeHost}/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
@@ -864,7 +868,7 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
-      <version>4.7.3</version>
+      <version>4.8.0</version>
     </dependency>
 
     <dependency>

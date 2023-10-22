@@ -47,7 +47,7 @@ To run toolchain:
     
 If you use a sonar server:
 
-    mvn sonar:sonar -Dsonar.login=<username> -Dsonar.password=<password>
+    mvn sonar:sonar -Dsonar.token=<token>
 
 
 ## Usage

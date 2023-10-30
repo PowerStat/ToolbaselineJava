@@ -22,7 +22,7 @@
 
     <license.inceptionYear>2023</license.inceptionYear>
     <license.licenseName>Apache License, Version 2.0</license.licenseName>
-        
+
     <sonarTypeHost>s01.oss.sonatype.org</sonarTypeHost>
     
     <sonar.host.url>http://localhost:9000</sonar.host.url>

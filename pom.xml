@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>11.2.1-SNAPSHOT</version>
+  <version>11.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -922,6 +922,13 @@
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-suite</artifactId>
+      <version>1.10.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
       <version>1.10.0</version>
       <scope>test</scope>
     </dependency>

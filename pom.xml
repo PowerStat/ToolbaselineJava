@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>17.0.1-SNAPSHOT</version>
+  <version>17.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -118,7 +118,7 @@
                   <workingDirectory>${project.build.directory}</workingDirectory>
                   <arguments>
                     <argument>-classpath</argument>
-                    <classpath />
+                    <classpath/>
                     <argument>${mainClass}</argument>
                   </arguments>
                 </configuration>

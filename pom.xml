@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>17.0.0</version>
+  <version>17.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -190,7 +190,7 @@
     <connection>scm:git:https://github.com/PowerStat/ToolbaselineJava.git</connection>
     <developerConnection>scm:git:https://github.com/PowerStat/ToolbaselineJava.git</developerConnection>
     <url>https://github.com/PowerStat/ToolbaselineJava</url>
-    <tag>V17.0.0</tag>
+    <tag>V11.0.0</tag>
   </scm>
 
   <repositories>

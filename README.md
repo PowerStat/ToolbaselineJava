@@ -59,6 +59,7 @@ To find newer plugins:
     
 To make a new release:
 
+    set MAVEN_GPG_PASSPHRASE=TopSecret
     mvn --batch-mode release:clean release:prepare release:perform
     git push -–tags
     git push origin master

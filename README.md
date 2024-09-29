@@ -11,7 +11,7 @@ For example when using Apache Maven you could add the following dependency to yo
     <dependency>
       <groupId>de.powerstat.toolbaseline</groupId>
       <artifactId>tbljava</artifactId>
-      <version>17.0.0</version>
+      <version>17.1.0</version>
     </dependency>
 
 Also please copy the `checkstyle-config.xml` and `PMD.xml` into your project.
@@ -47,7 +47,7 @@ Compile and build image:
     
 Run the image:
 
-    ./target/tictactoe
+    ./target/[imagename]
 
 To find newer dependencies:
 

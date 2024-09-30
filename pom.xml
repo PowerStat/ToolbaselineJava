@@ -23,6 +23,7 @@
     <license.inceptionYear>2024</license.inceptionYear>
     <license.licenseName>Apache License, Version 2.0</license.licenseName>
 
+    <sonarTypeServer>ossrh1<sonarTypeServer>
     <sonarTypeHost>s01.oss.sonatype.org</sonarTypeHost>
     
     <sonar.host.url>http://localhost:9000</sonar.host.url>
@@ -179,11 +180,11 @@
 
   <distributionManagement>
     <snapshotRepository>
-      <id>ossrh</id>
+      <id>${sonarTypeServer}</id>
       <url>https://${sonarTypeHost}/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
-      <id>ossrh</id>
+      <id>${sonarTypeServer}</id>
       <url>https://${sonarTypeHost}/service/local/staging/deploy/maven2/</url>
     </repository>
     <site>
@@ -375,7 +376,7 @@
         <version>1.7.0</version>
         <extensions>true</extensions>
         <configuration>
-          <serverId>ossrh</serverId>
+          <serverId>${sonarTypeServer}</serverId>
           <nexusUrl>https://${sonarTypeHost}/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>

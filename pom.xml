@@ -4,7 +4,7 @@
 
   <groupId>de.powerstat.toolbaseline</groupId>
   <artifactId>tbl-java-parent</artifactId>
-  <version>17.1.2-SNAPSHOT</version>
+  <version>17.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>PowerStatsToolbaselineJava</name>
@@ -485,7 +485,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.20.0</version>
+        <version>3.12.1</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.wagon</groupId>
@@ -795,6 +795,12 @@
       </plugin>
       -->
 
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <version>0.16.1</version>
+      </plugin>
+
     </plugins>
   </build>
 
@@ -923,6 +929,12 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <version>0.16.1</version>
+      </plugin>
+      
     </plugins>
 
   </reporting>

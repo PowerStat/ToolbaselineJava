@@ -29,6 +29,8 @@ Other build tools like gradle will work analogous.
 
 To compile this project yourself you could use:
 
+Set the environment variable: DEPENDENCY_TRACK_KEY to your dependency-track servers API key.
+
     mvn clean install site
     
 or simply:

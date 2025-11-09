@@ -272,7 +272,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.3</version>
         <configuration>
-          <forkCount>1</forkCount> <!-- 0 -->
+          <forkCount>1</forkCount> <!-- Not 0 for jacoco -->
           <trimStackTrace>false</trimStackTrace>
           <argLine>--add-reads org.mockito=java.xml</argLine>
         </configuration>
@@ -442,7 +442,7 @@
                   <banSnapshots>true</banSnapshots>
                   <phases>clean,deploy,site</phases>
                 </requirePluginVersions>
-                <requireReleaseDeps />
+                <!-- requireReleaseDeps /> -->
                 <requireUpperBoundDeps />
                 <!--
                 <reactorModuleConvergence>
@@ -744,14 +744,14 @@
           <execution>
             <id>jacoco-initialize</id>
             <goals>
-              <goal>prepare-agent</goal>
+              <goal>prepare-agent-integration</goal>
             </goals>
           </execution>
           <execution>
             <id>jacoco-report</id>
             <phase>test</phase>
             <goals>
-              <goal>report</goal>
+              <goal>report-integration</goal>
             </goals>
           </execution>
         </executions>
@@ -775,7 +775,7 @@
           <outputFormat>xml</outputFormat>
         </configuration>
       </plugin>
-
+<!--
       <plugin>
         <groupId>io.github.pmckeown</groupId>
         <artifactId>dependency-track-maven-plugin</artifactId>
@@ -793,11 +793,31 @@
           <apiKey>${dependencyTrackKey}</apiKey>
         </configuration>
       </plugin>
-
+-->
       <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
         <version>0.16.1</version>
+        <configuration>
+          <excludes>
+            <exclude>**/*.md</exclude>
+            <exclude>**/*.adoc</exclude>
+            <exclude>**/*.tmpl</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.iml</exclude>
+            <exclude>.eclipse-pmd</exclude>
+            <exclude>*.ump</exclude>
+            <exclude>*.xmi</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>6.17.0</version>
+        <dependencies>
+        </dependencies>
       </plugin>
 
     </plugins>
@@ -829,7 +849,7 @@
         <reportSets>
           <reportSet>
             <reports>
-              <report>report</report>
+              <report>report-integration</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -902,7 +922,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${javadocPluginVersion}</version>
         <configuration>
-          <show>private</show>
+          <show>protected</show>
           <failOnError>false</failOnError>
         </configuration>
       </plugin>
@@ -932,6 +952,18 @@
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
         <version>0.16.1</version>
+        <configuration>
+          <excludes>
+            <exclude>**/*.md</exclude>
+            <exclude>**/*.adoc</exclude>
+            <exclude>**/*.tmpl</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.iml</exclude>
+            <exclude>.eclipse-pmd</exclude>
+            <exclude>*.ump</exclude>
+            <exclude>*.xmi</exclude>
+          </excludes>
+        </configuration>
       </plugin>
       
     </plugins>
@@ -1103,6 +1135,13 @@
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-picocontainer</artifactId>
       <version>${cucumberVersion}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier</artifactId>
+      <version>4.2.1</version>
       <scope>test</scope>
     </dependency>
 

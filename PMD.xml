@@ -4,45 +4,6 @@
   <description>This ruleset checks the code for discouraged programming constructs.</description>
 
   <!-- Apex Rules -->
-  <!-- not used -->
-
-  <!-- Ecmascript Rules -->
-  <!-- Ecmascript best practices -->
-  <rule ref="category/ecmascript/bestpractices.xml/AvoidWithStatement" />
-  <rule ref="category/ecmascript/bestpractices.xml/ConsistentReturn" />
-  <rule ref="category/ecmascript/bestpractices.xml/GlobalVariable" />
-  <rule ref="category/ecmascript/bestpractices.xml/ScopeForInVariable" />
-  <rule ref="category/ecmascript/bestpractices.xml/UseBaseWithParseInt" />
-
-  <!-- Ecmascript code style -->
-  <rule ref="category/ecmascript/codestyle.xml/AssignmentInOperand">
-    <properties>
-      <property name="allowIf" value="false" />
-      <property name="allowFor" value="false" />
-      <property name="allowWhile" value="false" />
-      <property name="allowTernary" value="false" />
-      <property name="allowTernaryResults" value="false" />
-      <property name="allowIncrementDecrement" value="false" />
-    </properties>
-  </rule>
-  <rule ref="category/ecmascript/codestyle.xml/ForLoopsMustUseBraces" />
-  <rule ref="category/ecmascript/codestyle.xml/IfElseStmtsMustUseBraces" />
-  <rule ref="category/ecmascript/codestyle.xml/IfStmtsMustUseBraces" />
-  <rule ref="category/ecmascript/codestyle.xml/NoElseReturn" />
-  <rule ref="category/ecmascript/codestyle.xml/UnnecessaryBlock" />
-  <rule ref="category/ecmascript/codestyle.xml/UnnecessaryParentheses" />
-  <rule ref="category/ecmascript/codestyle.xml/UnreachableCode" />
-  <rule ref="category/ecmascript/codestyle.xml/WhileLoopsMustUseBraces" />
-
-  <!-- Ecmascript error prone -->
-  <rule ref="category/ecmascript/errorprone.xml/AvoidTrailingComma">
-    <properties>
-      <property name="allowObjectLiteral" value="false" />
-      <property name="allowArrayLiteral" value="false" />
-    </properties>
-  </rule>
-  <rule ref="category/ecmascript/errorprone.xml/EqualComparison" />
-  <rule ref="category/ecmascript/errorprone.xml/InaccurateNumericLiteral" />
 
   <!-- HTML Rules -->
   <!-- HTML best practices -->
@@ -737,13 +698,61 @@
   <rule ref="category/jsp/security.xml/IframeMissingSrcAttribute" />
   <rule ref="category/jsp/security.xml/NoUnsanitizedJSPExpression" />
 
+  <!-- JavaScript Rules -->
+  <!-- JavaScript best practices -->
+  <rule ref="category/ecmascript/bestpractices.xml/AvoidWithStatement" />
+  <rule ref="category/ecmascript/bestpractices.xml/ConsistentReturn" />
+  <rule ref="category/ecmascript/bestpractices.xml/GlobalVariable" />
+  <rule ref="category/ecmascript/bestpractices.xml/ScopeForInVariable" />
+  <rule ref="category/ecmascript/bestpractices.xml/UseBaseWithParseInt" />
+
+  <!-- JavaScript code style -->
+  <rule ref="category/ecmascript/codestyle.xml/AssignmentInOperand">
+    <properties>
+      <property name="allowIf" value="false" />
+      <property name="allowFor" value="false" />
+      <property name="allowWhile" value="false" />
+      <property name="allowTernary" value="false" />
+      <property name="allowTernaryResults" value="false" />
+      <property name="allowIncrementDecrement" value="false" />
+    </properties>
+  </rule>
+  <rule ref="category/ecmascript/codestyle.xml/ForLoopsMustUseBraces" />
+  <rule ref="category/ecmascript/codestyle.xml/IfElseStmtsMustUseBraces" />
+  <rule ref="category/ecmascript/codestyle.xml/IfStmtsMustUseBraces" />
+  <rule ref="category/ecmascript/codestyle.xml/NoElseReturn" />
+  <rule ref="category/ecmascript/codestyle.xml/UnnecessaryBlock" />
+  <rule ref="category/ecmascript/codestyle.xml/UnnecessaryParentheses" />
+  <rule ref="category/ecmascript/codestyle.xml/UnreachableCode" />
+  <rule ref="category/ecmascript/codestyle.xml/WhileLoopsMustUseBraces" />
+
+  <!-- JavaScript error prone -->
+  <rule ref="category/ecmascript/errorprone.xml/AvoidTrailingComma">
+    <properties>
+      <property name="allowObjectLiteral" value="false" />
+      <property name="allowArrayLiteral" value="false" />
+    </properties>
+  </rule>
+  <rule ref="category/ecmascript/errorprone.xml/EqualComparison" />
+  <rule ref="category/ecmascript/errorprone.xml/InaccurateNumericLiteral" />
+
+  <!-- Kotlin rules -->
+
   <!-- Maven POM Rules -->
-  <!-- Maven error prone -->
+  <rule ref="category/pom/errorprone.xml/InvalidDependencyTypes">
+    <properties>
+      <property name="validTypes" value="pom,jar,maven-plugin,ejb,war,ear,rar,par" />
+    </properties>
+  </rule>
+  <rule ref="category/pom/errorprone.xml/ProjectVersionAsDependencyVersion" />
 
   <!-- Modelica Rules -->
   <!-- PLSQL Rules -->
   <!-- Salesforce VisualForce Rules -->
-  <!-- VM Rules -->
+  <!-- Scala rules -->
+  <!-- Swift rules -->
+  <!-- Velocity template language rules -->
+  <!-- WSDL rules -->
 
   <!-- XML Rules -->
   <!-- XML error prone -->

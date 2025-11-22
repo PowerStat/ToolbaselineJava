@@ -28,7 +28,7 @@
     
     <sonar.host.url>http://localhost:9000</sonar.host.url>
 
-    <dependencyTrackUrl>http://localhost:8081</dependencyTrackUrl>
+    <dependencyTrackUrl>http://localhost:8080</dependencyTrackUrl>
     <dependencyTrackKey>${env.DEPENDENCY_TRACK_KEY}</dependencyTrackKey>
     
     <javaRelease>17</javaRelease>
@@ -47,7 +47,7 @@
     <junitPlatformVersion>1.14.1</junitPlatformVersion>
     <mockitoVersion>5.20.0</mockitoVersion>
     <log4jVersion>2.25.2</log4jVersion>
-    <cucumberVersion>7.31.0</cucumberVersion>
+    <cucumberVersion>7.32.0</cucumberVersion>
   </properties>
 
   <profiles>

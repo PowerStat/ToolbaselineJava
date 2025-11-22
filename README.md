@@ -65,7 +65,11 @@ To make a new release:
     mvn --batch-mode release:clean release:prepare release:perform
     git push -–tags
     git push origin master
-        
+
+To run pmd:
+
+    mvn pmd:check
+
 To run toolchain:
 
     mvn toolchains:toolchain

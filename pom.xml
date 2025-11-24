@@ -805,9 +805,14 @@
             <exclude>**/*.tmpl</exclude>
             <exclude>**/*.properties</exclude>
             <exclude>**/*.iml</exclude>
-            <exclude>.eclipse-pmd</exclude>
+            <exclude>**/*.pmd</exclude>
+            <exclude>**/*.eclipse-pmd</exclude>
             <exclude>*.ump</exclude>
             <exclude>*.xmi</exclude>
+            <exclude>*.svg</exclude>
+            <exclude>TODOS.txt</exclude>
+            <exclude>TODO.txt</exclude>
+            <exclude>Concept.txt</exclude>
           </excludes>
         </configuration>
       </plugin>

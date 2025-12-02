@@ -79,6 +79,7 @@ If you use a sonar server:
     mvn sonar:sonar -Dsonar.token=<token>
 
 Apache-rat:
+
      mvn apache-rat:check
 
 

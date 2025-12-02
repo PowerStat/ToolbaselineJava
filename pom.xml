@@ -79,6 +79,7 @@
         </plugins>
       </build>
     </profile>
+
     <profile>
       <id>native</id>
       <build>
@@ -149,6 +150,180 @@
         </plugins>
       </build>
     </profile>
+    
+    <profile>
+      <id>jacoco</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacocoPluginVersion}</version>
+            <executions>
+              <execution>
+                <id>jacoco-initialize</id>
+                <goals>
+                  <goal>prepare-agent-integration</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>jacoco-report</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>report-integration</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+      </build>
+      
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacocoPluginVersion}</version>
+            <reportSets>
+              <reportSet>
+                <reports>
+                  <!-- select non-aggregate reports -->
+                  <report>report-integration</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+
+        </plugins>
+      </reporting>
+    </profile>
+    
+    <profile>
+      <id>dependency-track</id>
+      <build>
+        <plugins> 
+          <plugin>
+            <groupId>io.github.pmckeown</groupId>
+            <artifactId>dependency-track-maven-plugin</artifactId>
+            <version>1.10.2</version>
+            <executions>
+              <execution>
+                <phase>verify</phase>
+                <goals>
+                  <goal>upload-bom</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <dependencyTrackBaseUrl>${dependencyTrackUrl}</dependencyTrackBaseUrl>
+              <apiKey>${dependencyTrackKey}</apiKey>
+            </configuration>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+    
+    <profile>
+      <id>errorprone</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.14.1</version>
+            <configuration>
+              <fork>true</fork>
+              <showDeprecation>true</showDeprecation>
+              <showWarnings>true</showWarnings>
+              <debug>true</debug>
+              <verbose>false</verbose>
+              <release>${javaRelease}</release>
+              <source>${javaRelease}</source>
+              <target>${javaRelease}</target>
+              <compilerArgs>
+                <arg>-XDcompilePolicy=simple</arg>
+                <arg>--should-stop=ifError=FLOW</arg>
+                <arg>-Xplugin:ErrorProne</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+              </compilerArgs>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>com.google.errorprone</groupId>
+                  <artifactId>error_prone_core</artifactId>
+                  <version>2.42.0</version>
+                </path>
+              </annotationProcessorPaths>
+            </configuration>
+          </plugin>
+
+        </plugins>
+      </build>
+
+    </profile>
+    
+    <profile>
+      <id>checkerframework</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.14.1</version>
+            <configuration>
+              <fork>true</fork>
+              <showDeprecation>true</showDeprecation>
+              <showWarnings>true</showWarnings>
+              <debug>true</debug>
+              <verbose>false</verbose>
+              <release>${javaRelease}</release>
+              <source>${javaRelease}</source>
+              <target>${javaRelease}</target>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>org.checkerframework</groupId>
+                  <artifactId>checker</artifactId>
+                  <version>3.52.0</version>
+                </path>
+              </annotationProcessorPaths>
+              <annotationProcessors>
+                <!-- Add all the checkers you want to enable here -->
+                <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+              </annotationProcessors>
+              <compilerArgs>
+                <arg>-Xmaxerrs</arg>
+                <arg>10000</arg>
+                <arg>-Xmaxwarns</arg>
+                <arg>10000</arg>
+                <!-- <arg>-Awarns</arg> --> <!-- -Awarns turns type-checking errors into warnings. -->
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+              </compilerArgs>
+            </configuration>
+          </plugin>
+
+        </plugins>
+      </build>
+
+    </profile>
 
   </profiles>
 
@@ -205,7 +380,7 @@
 
   <repositories>
   </repositories>
-
+    
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -737,27 +912,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${jacocoPluginVersion}</version>
-        <executions>
-          <execution>
-            <id>jacoco-initialize</id>
-            <goals>
-              <goal>prepare-agent-integration</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>jacoco-report</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report-integration</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.cyclonedx</groupId>
         <artifactId>cyclonedx-maven-plugin</artifactId>
         <version>2.9.1</version>
@@ -775,25 +929,7 @@
           <outputFormat>xml</outputFormat>
         </configuration>
       </plugin>
-<!--
-      <plugin>
-        <groupId>io.github.pmckeown</groupId>
-        <artifactId>dependency-track-maven-plugin</artifactId>
-        <version>1.10.2</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>upload-bom</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <dependencyTrackBaseUrl>${dependencyTrackUrl}</dependencyTrackBaseUrl>
-          <apiKey>${dependencyTrackKey}</apiKey>
-        </configuration>
-      </plugin>
--->
+
       <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
@@ -845,19 +981,6 @@
         <version>3.5.4</version>
         <configuration>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${jacocoPluginVersion}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>report-integration</report>
-            </reports>
-          </reportSet>
-        </reportSets>
       </plugin>
 
       <plugin>
@@ -1047,6 +1170,18 @@
       <artifactId>spotbugs-annotations</artifactId>
       <version>4.9.8</version>
     </dependency>
+    
+    <dependency>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>checker-qual</artifactId>
+      <version>3.52.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jmolecules</groupId>
+      <artifactId>jmolecules-ddd</artifactId>
+      <version>2.0.1</version>
+    </dependency>
 
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
@@ -1146,7 +1281,7 @@
     <dependency>
       <groupId>nl.jqno.equalsverifier</groupId>
       <artifactId>equalsverifier</artifactId>
-      <version>4.2.3</version>
+      <version>4.2.4</version>
       <scope>test</scope>
     </dependency>
 

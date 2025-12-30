@@ -46,9 +46,9 @@
      
     <junitVersion>5.14.1</junitVersion>
     <junitPlatformVersion>1.14.1</junitPlatformVersion>
-    <mockitoVersion>5.20.0</mockitoVersion>
+    <mockitoVersion>5.21.0</mockitoVersion>
     <log4jVersion>2.25.2</log4jVersion>
-    <cucumberVersion>7.32.0</cucumberVersion>
+    <cucumberVersion>7.33.0</cucumberVersion>
   </properties>
 
   <profiles>
